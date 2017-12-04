@@ -33,7 +33,7 @@
 
 	</distributionManagement>
 	
-
+	<!--THIS IS BASICALLY A CODE -->
     <pluginRepositories>
         <pluginRepository>
             <id>vaadin-snapshots</id>
