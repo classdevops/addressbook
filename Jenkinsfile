@@ -2,6 +2,7 @@ node {'master'
    def mvnHome
    def version 
    stage('Checkout') {
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GITHUB', url: 'https://github.com/classdevops/addressbook.git']]])
       git 'https://github.com/classdevops/addressbook.git'
       mvnHome = tool 'LOCAL_MAVEN'
 	  version = '2.3.5' 
