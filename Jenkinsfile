@@ -1,10 +1,11 @@
 node {'master'
    def mvnHome
    def version 
-   stage('Preparation') {
+   stage('Checkout') {
       git 'https://github.com/classdevops/addressbook.git'
       mvnHome = tool 'LOCAL_MAVEN'
 	  version = '2.3.5' 
+	   // THIS IS ON DEVELOP BRANCH.
    }
    stage('Build') {
         withMaven(
