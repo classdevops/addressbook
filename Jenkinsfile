@@ -16,9 +16,9 @@ node {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore test -Pfunctional-test -DSkipUTs=true -DskipTests=true"
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore test -Pfunctional-test -DSkipUTs=true -DskipTests=true/)
-      git 'https://github.com/sachingupta771/addressbook.git'
-      mvnHome = tool 'LOCAL_MAVEN'
-	  version = '3.3.9' 
+      //git 'https://github.com/sachingupta771/addressbook.git'
+      //mvnHome = tool 'LOCAL_MAVEN'
+	//  version = '3.3.9' 
    }
    stage('Perform-UnitTest') {
         withMaven(
