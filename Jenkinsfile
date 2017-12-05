@@ -2,8 +2,7 @@ node {
    def mvnHome
    def version 
    stage('Preparation') {
-<<<<<<< HEAD
-      git 'https://github.com/SeshagiriSriram/addressbook.git'
+      git 'https://github.com/classdevops/addressbook.git'
       mvnHome = tool 'LOCAL_MAVEN'
 	  version = '2.3.5' 
    }
@@ -17,7 +16,6 @@ node {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore test -Pfunctional-test -DSkipUTs=true -DskipTests=true"
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore test -Pfunctional-test -DSkipUTs=true -DskipTests=true/)
-=======
       git 'https://github.com/sachingupta771/addressbook.git'
       mvnHome = tool 'LOCAL_MAVEN'
 	  version = '3.3.9' 
@@ -32,13 +30,13 @@ node {
          sh "'${mvnHome}/bin/mvn'  clean test"
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean test/)
->>>>>>> c618cbe7fefbbff7a5530f00ef38639b7f80756d
+
       }
     } // withMaven will discover the generated Maven artifacts, JUnit reports and FindBugs reports
     
 
    }
-<<<<<<< HEAD
+
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
@@ -46,7 +44,7 @@ node {
      stage('DeployToServer') {
 	 } 
 } 
-=======
+
    stage('PublishResults') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
@@ -54,5 +52,4 @@ node {
 
    stage('notify') { 
    } 
-} 
->>>>>>> c618cbe7fefbbff7a5530f00ef38639b7f80756d
+}
