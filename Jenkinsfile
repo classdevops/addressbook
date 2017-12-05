@@ -1,4 +1,4 @@
-node {
+node {'master'
    def mvnHome
    def version 
    stage('Preparation') {
