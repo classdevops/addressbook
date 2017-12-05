@@ -10,8 +10,7 @@ node {
         withMaven(
         maven: 'LOCAL_MAVEN', // Maven installation declared in the Jenkins "Global Tool Configuration"
         mavenSettingsConfig: 'settings.xml', // Maven settings.xml file defined with the Jenkins Config File Provider Plugin
-        mavenLocalRepo: 'd:/repos') {
-
+        mavenLocalRepo: 'd:/repos')
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore test -Pfunctional-test -DSkipUTs=true -DskipTests=true"
       } else {
@@ -20,12 +19,12 @@ node {
       //mvnHome = tool 'LOCAL_MAVEN'
 	//  version = '3.3.9' 
    }
+   }
    stage('Perform-UnitTest') {
         withMaven(
         maven: 'LOCAL_MAVEN', // Maven installation declared in the Jenkins "Global Tool Configuration"
         mavenSettingsConfig: 'settings.xml', // Maven settings.xml file defined with the Jenkins Config File Provider Plugin
-        mavenLocalRepo: '/opt/maven') {
-
+        mavenLocalRepo: '/opt/maven') 
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn'  clean test"
       } else {
@@ -35,21 +34,16 @@ node {
     } // withMaven will discover the generated Maven artifacts, JUnit reports and FindBugs reports
     
 
-   }
-
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
      stage('DeployToServer') {
 	 } 
-} 
-
    stage('PublishResults') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
 
    stage('notify') { 
-   } 
-}
+   }
