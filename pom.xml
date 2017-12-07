@@ -71,7 +71,7 @@
 
 
  <modules>
-        <module>addressbook_main</module>
+        <module>addressbook</module>
     </modules>
 
 
